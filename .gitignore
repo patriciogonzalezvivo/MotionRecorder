@@ -1,0 +1,13 @@
+.DS_Store
+mdt-Core.xcodeproj/
+openFrameworks-Info.plist
+Project.xcconfig
+*.app/
+.app/
+
+mesaDelTiempo.xcodeproj/
+obj/
+bin/mesaDelTiempo
+bin/libs/
+bin/mesaDelTiempo_debug
+bin/mesaDelTiempo_funciona
