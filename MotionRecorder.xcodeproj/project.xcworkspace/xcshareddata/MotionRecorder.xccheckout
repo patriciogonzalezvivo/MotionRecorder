@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B66D7FB2-522E-4FA8-B219-8A15CB428BC7</string>
+	<string>DFD24525-8F3D-42FC-B157-9ECDB62BA795</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MotionRecorder</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,6 +14,8 @@
 		<string>ssh://github.com/patriciogonzalezvivo/MotionRecorder.git</string>
 		<key>7B3CAA29-F58C-40CB-A59E-79A05FE94D74</key>
 		<string>ssh://github.com/openframeworks/openFrameworks.git</string>
+		<key>EC6BF890-5D29-4DC7-8E76-4AE754ABF8CA</key>
+		<string>ssh://github.com/labatrockwell/ofxLibwebsockets.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>apps/myApps/MotionRecorder/MotionRecorder.xcodeproj/project.xcworkspace</string>
@@ -23,6 +25,8 @@
 		<string>../..</string>
 		<key>7B3CAA29-F58C-40CB-A59E-79A05FE94D74</key>
 		<string>../../../../..</string>
+		<key>EC6BF890-5D29-4DC7-8E76-4AE754ABF8CA</key>
+		<string>../../../../../addons/ofxLibwebsockets</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/openframeworks/openFrameworks.git</string>
@@ -39,6 +43,14 @@
 			<string>74DF082F-05CA-49AC-B1E9-81CFD944A393</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MotionRecorder</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EC6BF890-5D29-4DC7-8E76-4AE754ABF8CA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxLibwebsockets</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

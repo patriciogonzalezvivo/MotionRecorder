@@ -5,6 +5,7 @@
 #include "ofxiOSExtras.h"
 
 #import <CoreMotion/CMMotionManager.h>
+#import "SRWebSocket.h"
 
 class ofApp : public ofxiOSApp {
 public:
@@ -35,6 +36,8 @@ public:
     ofBuffer buffer;
     
     bool    bRecording;
+    
+    SRWebSocket *webSocket;
 };
 
 

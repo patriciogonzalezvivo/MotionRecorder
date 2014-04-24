@@ -12,6 +12,9 @@ void ofApp::setup(){
     [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXMagneticNorthZVertical];
     
     bRecording = false;
+    
+    webSocket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://ec2-54-86-66-121.compute-1.amazonaws.com:8080"]]];
+    [webSocket open];
 }
 
 //--------------------------------------------------------------
@@ -45,6 +48,12 @@ void ofApp::update(){
     
     if(bRecording){
         buffer.append(line);
+    }
+    
+    if(webSocket.readyState == SR_OPEN){
+        string string = "{\"event\":\"update\",\"attitud\":{\"x\":"+ofToString(quat.x)+",\"y\":"+ofToString(quat.y)+",\"z\":"+ofToString(quat.z)+",\"w\":"+ofToString(quat.w)+"}}";
+        NSString *message = [[NSString stringWithUTF8String:string.c_str()] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];;
+        [webSocket send:message];
     }
 }
 
