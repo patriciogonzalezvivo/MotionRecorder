@@ -25,19 +25,28 @@ public:
     void gotMemoryWarning();
     void deviceOrientationChanged(int newOrientation);
 
+    //  WebSockets
+    //
+    SRWebSocket *webSocket;
+    double      lat, lon, alt;
+    bool        hasGPS;
+    
+    //  GPS
+    //
+    ofxiOSCoreLocation * coreLocation;
+    
+    //  Attitud (Compaz + Gyroscope + acceler )
+    //
     CMMotionManager* motionManager;
 	CMAttitude* referenceAttitude;
     CMAttitudeReferenceFrame referenceFrameType;
-    
     ofQuaternion attitudeQuat;
-    ofVec3f userAcceleration;
-    ofVec3f gravity;
+    ofVec3f accel;
     
+    //  Buffer
+    //
     ofBuffer buffer;
-    
     bool    bRecording;
-    
-    SRWebSocket *webSocket;
 };
 
 

@@ -1,0 +1,18 @@
+{
+  "name": "MotionRecorder",
+  "version": "0.0.0",
+  "engines": {
+    "node": "0.10.26"
+  },
+  "description": "Server for MotorRecorder iOS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodejs-websocket": "^0.1.4"
+  }
+}
