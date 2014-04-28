@@ -24,11 +24,13 @@ void ofApp::setup(){
     [motionManager setDeviceMotionUpdateInterval: updateFrequency];
     referenceAttitude = nil;
     referenceFrameType = [motionManager attitudeReferenceFrame];
-    [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical];
+    [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXMagneticNorthZVertical];
     
     //  Buffer
     //
     bRecording = false;
+    
+    resetButtonPos.set(ofGetScreenWidth()*0.5, ofGetScreenHeight()*0.9);
 }
 
 //--------------------------------------------------------------
@@ -162,6 +164,17 @@ void ofApp::draw(){
     ofDrawBitmapString("Lat: "+ofToString(lat), ofPoint(10,30,0));
     ofDrawBitmapString("Lon: "+ofToString(lon), ofPoint(10,45,0));
     ofDrawBitmapString("Alt: "+ofToString(alt), ofPoint(10,60,0));
+    
+    ofDrawBitmapString("Pitch: "+ofToString(attitudeQuat.getEuler().y), ofPoint(160,30,0));
+    ofDrawBitmapString("Roll: "+ofToString(attitudeQuat.getEuler().z), ofPoint(160,45,0));
+    ofDrawBitmapString("Yaw: "+ofToString(attitudeQuat.getEuler().x), ofPoint(160,60,0));
+    
+    ofPushStyle();
+    ofNoFill();
+    ofSetColor(255, 100);
+    ofSetLineWidth(2);
+    ofCircle(resetButtonPos, 45);
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------
@@ -186,7 +199,12 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
 
 //--------------------------------------------------------------
 void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
-    if(bRecording){
+    
+    if(touch.distance(resetButtonPos)<25){
+        CMDeviceMotion *deviceMotion = motionManager.deviceMotion;
+        CMAttitude *attitude = deviceMotion.attitude;
+        referenceAttitude = [attitude copy];
+    } else if(bRecording){
         string fileName = "../Documents/"+ofGetTimestampString()+".csv";
         ofBufferToFile(fileName, buffer);
         buffer.clear();

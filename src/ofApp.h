@@ -1,10 +1,14 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxiOS.h"
-#include "ofxiOSExtras.h"
 
+
+#include "ofxiPhone.h"
+#include "ofxiPhoneExtras.h"
+//#include "ofxiOS.h"
+//#include "ofxiOSExtras.h"
 #import <CoreMotion/CMMotionManager.h>
+
 #import "SRWebSocket.h"
 
 class ofApp : public ofxiOSApp {
@@ -47,6 +51,10 @@ public:
     //
     ofBuffer buffer;
     bool    bRecording;
+    
+    //  UI
+    //
+    ofPoint resetButtonPos;
 };
 
 
