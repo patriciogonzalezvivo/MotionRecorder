@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 
-#include "Prototype02.h"
 #include "Prototype03.h"
 
 class ofApp : public ofBaseApp{

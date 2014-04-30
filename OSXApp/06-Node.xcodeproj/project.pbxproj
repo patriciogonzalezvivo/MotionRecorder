@@ -28,7 +28,6 @@
 		3D225B96190B39C30037E81A /* TileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D225B8C190B39C30037E81A /* TileLoader.cpp */; };
 		3D225B97190B39C30037E81A /* StreetView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D225B8F190B39C30037E81A /* StreetView.cpp */; };
 		3D225B98190B39C30037E81A /* UIMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D225B91190B39C30037E81A /* UIMap.cpp */; };
-		3D2C19BE19095D6000BD2B83 /* Prototype02.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2C19BC19095D6000BD2B83 /* Prototype02.cpp */; };
 		3D7BFD48190FE4BD00FBF8DD /* Prototype03.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D7BFD46190FE4BD00FBF8DD /* Prototype03.cpp */; };
 		3D7BFD51190FFA8C00FBF8DD /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D7BFD4E190FFA8C00FBF8DD /* ofxAVFVideoPlayer.mm */; };
 		3D7BFD52190FFA8C00FBF8DD /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7BFD50190FFA8C00FBF8DD /* ofxAVFVideoRenderer.m */; };
@@ -240,8 +239,6 @@
 		3D225B90190B39C30037E81A /* StreetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetView.h; sourceTree = "<group>"; };
 		3D225B91190B39C30037E81A /* UIMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIMap.cpp; sourceTree = "<group>"; };
 		3D225B92190B39C30037E81A /* UIMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMap.h; sourceTree = "<group>"; };
-		3D2C19BC19095D6000BD2B83 /* Prototype02.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Prototype02.cpp; sourceTree = "<group>"; };
-		3D2C19BD19095D6000BD2B83 /* Prototype02.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prototype02.h; sourceTree = "<group>"; };
 		3D7BFD46190FE4BD00FBF8DD /* Prototype03.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Prototype03.cpp; sourceTree = "<group>"; };
 		3D7BFD47190FE4BD00FBF8DD /* Prototype03.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prototype03.h; sourceTree = "<group>"; };
 		3D7BFD4D190FFA8C00FBF8DD /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
@@ -922,8 +919,6 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
-				3D2C19BD19095D6000BD2B83 /* Prototype02.h */,
-				3D2C19BC19095D6000BD2B83 /* Prototype02.cpp */,
 				3D7BFD47190FE4BD00FBF8DD /* Prototype03.h */,
 				3D7BFD46190FE4BD00FBF8DD /* Prototype03.cpp */,
 			);
@@ -1194,7 +1189,6 @@
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				9ef1133bc23669a5c94fe30f676125b8 /* jsoncpp.cpp in Sources */,
 				3D225B93190B39C30037E81A /* base64.cpp in Sources */,
-				3D2C19BE19095D6000BD2B83 /* Prototype02.cpp in Sources */,
 				c6c3882a0b0872d1485f3874ee93b0d5 /* Client.cpp in Sources */,
 				a78c77753d562ae8f0e928ed7b2c02ac /* Connection.cpp in Sources */,
 				3D7BFD52190FFA8C00FBF8DD /* ofxAVFVideoRenderer.m in Sources */,
