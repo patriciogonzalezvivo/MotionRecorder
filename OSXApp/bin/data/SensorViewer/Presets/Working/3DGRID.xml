@@ -3,7 +3,7 @@
     <Name>3DGRID</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>307.000000000</YPosition>
+    <YPosition>332.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,17 +13,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>gridLineWidth</Name>
-    <Value>1.000000000</Value>
+    <Value>0.827586234</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>majorGridLineWidth</Name>
-    <Value>1.500000000</Value>
+    <Value>0.500000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridScale</Name>
-    <Value>25.000000000</Value>
+    <Value>9.778325081</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,17 +33,17 @@
 <Widget>
     <Kind>28</Kind>
     <Name>gridColor</Name>
-    <XValue>0.000000000</XValue>
-    <YValue>0.000000000</YValue>
-    <RColor>249</RColor>
-    <GColor>234</GColor>
-    <BColor>234</BColor>
+    <XValue>0.010000000</XValue>
+    <YValue>0.007812500</YValue>
+    <RColor>252</RColor>
+    <GColor>232</GColor>
+    <BColor>229</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridAlpha</Name>
-    <Value>36.428573608</Value>
+    <Value>21.354679108</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -63,30 +63,30 @@
 <Widget>
     <Kind>4</Kind>
     <Name>gridMajorAlpha</Name>
-    <Value>82.906402588</Value>
+    <Value>56.527091980</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridMajorBrightness</Name>
-    <Value>1.000000000</Value>
+    <Value>0.990147769</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>gridAlphaScale</Name>
-    <Value>1.000000000</Value>
+    <Value>0.825123191</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogFalloffDistance</Name>
-    <Value>462.068969727</Value>
+    <Value>100.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogFalloffExpo</Name>
-    <Value>3.470936060</Value>
+    <Value>3.146797895</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogFalloffScale</Name>
-    <Value>1.200000048</Value>
+    <Value>1.482758641</Value>
 </Widget>

@@ -23,7 +23,6 @@ void SensorViewer::selfSetup(){
     firstLocation.lat = 0;
     firstLocation.lon = 0;
     
-    bLoadSV = false;
     mesh.clear();
     mesh.setMode(OF_PRIMITIVE_POINTS);
 }
@@ -52,83 +51,10 @@ void SensorViewer::guiSystemEvent(ofxUIEventArgs &e){
 
 void SensorViewer::selfUpdate(){
     map.update();
-    gsv.update();
     
     {
         string message = "{ \"event\":\"get\" }";
         client.send(message);
-    }
-    
-    if(!bLoadSV && firstLocation.lon != 0 && firstLocation.lat != 0){
-        gsv.setLocation(firstLocation);
-        gsv.setZoom(1);
-        bLoadSV = true;
-    }
-    
-    if (gsv.isTextureLoaded() && gsv.getPanoId() != actualPanoId){
-        Location newLocation = gsv.getLocation();
-        
-        ofPoint newPosition = map.locationPoint(newLocation);
-        ofPoint firstPosition = map.locationPoint(firstLocation);
-        ofPoint diff = newPosition-firstPosition;
-        
-        float angle = atan2(diff.y,diff.x);
-        double dist = firstLocation.getDistanceTo(newLocation);
-        
-        ofPoint actualPosition;
-        actualPosition.x = dist*cos(angle);
-        actualPosition.y = dist*sin(-angle);
-        
-        addLook(actualPosition);
-        actualPanoId = gsv.getPanoId();
-        gsv.setLocation(map.getCenter());
-    }
-}
-
-void SensorViewer::addLook(ofPoint _center){
-    int mapWidth = gsv.getDepthMapWidth();
-    int mapHeight = gsv.getDepthMapHeight();
-    
-    ofQuaternion ang_offset;
-    ang_offset.makeRotate(180-gsv.getDirection(), 0, 0, 1);
-    float tiltAngle = gsv.getTiltYaw()*DEG_TO_RAD;
-    ofQuaternion tilt_offset;
-    tilt_offset.makeRotate(gsv.getTiltPitch(), cos(tiltAngle), sin(-tiltAngle), 0);
-    
-    ofPixels panoPixels;
-    gsv.getTextureReference().readToPixels(panoPixels);
-    
-    for (int x = 0; x < mapWidth; x++) {
-        for (unsigned int y = 0; y < mapHeight; y++) {
-            
-            float rad_azimuth = x / (float) (mapWidth - 1.0f) * TWO_PI;
-            float rad_elevation = y / (float) (mapHeight - 1.0f) * PI;
-            
-            ofPoint pos;
-            pos.x = sin(rad_elevation) * sin(rad_azimuth);
-            pos.y = sin(rad_elevation) * cos(rad_azimuth);
-            pos.z = cos(rad_elevation);
-            
-            int index = y*mapWidth+x;
-            int depthMapIndex = gsv.depthmapIndices[index];
-            if (depthMapIndex != 0){
-                DepthMapPlane plane = gsv.depthmapPlanes[depthMapIndex];
-                double distance = -plane.d/(plane.x * pos.x + plane.y * pos.y + -plane.z * pos.z);
-                float brigtness = panoPixels.getColor(x,y).getBrightness();
-                
-                if(distance>3){
-                    ofPoint vertex;
-                    vertex = ang_offset * tilt_offset * pos;
-                    vertex *= distance;
-                    vertex += _center+ofPoint(0,0,gsv.getGroundHeight()+gsv.getElevation());
-                    
-                    mesh.addColor(panoPixels.getColor(((float)x/(float)mapWidth)*panoPixels.getWidth(),
-                                                      ((float)y/(float)mapHeight)*panoPixels.getHeight()));
-                    mesh.addNormal(ofPoint(plane.x,plane.y,plane.z));
-                    mesh.addVertex(vertex);
-                }
-            }
-        }
     }
 }
 

@@ -67,12 +67,7 @@ protected:
     UIMap       map;
     Location    firstLocation;
     
-    void        addLook(ofPoint _center);
-    StreetView  gsv;
     ofVboMesh   mesh;
-    string      actualPanoId;
-    vector<string> panoIds;
-    bool        bLoadSV;
     
     UI3DGrid    grid;
     

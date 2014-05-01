@@ -129,29 +129,29 @@ void VideoPlayer::selfDraw(){
             quat.getRotate(angle, axis);
             ofRotate(angle, axis.x, -axis.y, axis.z); // rotate with quaternion
             
+            ofSetColor(255);
+            player.getTextureReference().bind();
+            sphereMesh.draw();
+            player.getTextureReference().unbind();
+            
             ofNoFill();
             ofSetColor(255,200);
             ofDrawAxis(100*sensorScale);
             
             ofSetColor(0, 0, 255,100);
-            ofCircle(0, 0, 125*sensorScale);
+            ofCircle(0, 0, sphereRadio-10);
             
             ofPushMatrix();
             ofRotate(90, 1, 0, 0);
             ofSetColor(0, 255, 0,100);
-            ofCircle(0, 0, 125*sensorScale);
+            ofCircle(0, 0, sphereRadio-10);
             ofPopMatrix();
             
             ofPushMatrix();
             ofRotate(90, 0, 1, 0);
             ofSetColor(255, 0, 0,100);
-            ofCircle(0, 0, 125*sensorScale);
+            ofCircle(0, 0, sphereRadio-10);
             ofPopMatrix();
-            
-            ofSetColor(255);
-            player.getTextureReference().bind();
-            sphereMesh.draw();
-            player.getTextureReference().unbind();
             
             ofPopMatrix();
         }
