@@ -3,6 +3,7 @@
 #include "ofMain.h"
 
 #include "VideoPlayer.h"
+#include "SensorViewer.h"
 
 class ofApp : public ofBaseApp{
 public:

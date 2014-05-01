@@ -33,6 +33,7 @@
 		3DD5ED2A1912F07100A4383A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD5ED271912F07100A4383A /* QuartzCore.framework */; };
 		3DD5ED2B1912F07100A4383A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD5ED281912F07100A4383A /* CoreMedia.framework */; };
 		3DD5ED2C1912F07100A4383A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD5ED291912F07100A4383A /* AVFoundation.framework */; };
+		3DD5ED311912F5A000A4383A /* SensorViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5ED2F1912F5A000A4383A /* SensorViewer.cpp */; };
 		3d4ea8e172d3e4a30fefa969797f0789 /* ofxUIImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 938f5a098a216b403906129cc0e18a64 /* ofxUIImage.cpp */; };
 		43badbb2fe0f17d34b57a705622bd4a2 /* ofxUIScrollableCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = bfd3387aa9efa53e1b4f087b3fdfa1d3 /* ofxUIScrollableCanvas.cpp */; };
 		4b3ed367ca852d522e2ee996fd98484a /* ofxUI2DPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1553d7111bcbe7834bcc0784d535c378 /* ofxUI2DPad.cpp */; };
@@ -246,6 +247,8 @@
 		3DD5ED271912F07100A4383A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3DD5ED281912F07100A4383A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3DD5ED291912F07100A4383A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3DD5ED2F1912F5A000A4383A /* SensorViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SensorViewer.cpp; sourceTree = "<group>"; };
+		3DD5ED301912F5A000A4383A /* SensorViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorViewer.h; sourceTree = "<group>"; };
 		3b1e218bb487735b3b3c780d9b5f1836 /* UILight.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = UILight.h; path = ../../../addons/ofxUIProject/src/gl/UILight.h; sourceTree = SOURCE_ROOT; };
 		3c6fee882262e92dcae3a37314dc6c40 /* UIEasyCam.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = UIEasyCam.h; path = ../../../addons/ofxUIProject/src/camera/UIEasyCam.h; sourceTree = SOURCE_ROOT; };
 		3c9066fb257b904a547019eda3209785 /* ofxUIDragableLabelButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIDragableLabelButton.h; path = ../../../addons/ofxUI/src/ofxUIDragableLabelButton.h; sourceTree = SOURCE_ROOT; };
@@ -921,6 +924,8 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				ce27dda38b3f8dfdb5c37a972c8baf2d /* VideoPlayer.h */,
 				d72634efab162235913adf19f3f651f2 /* VideoPlayer.cpp */,
+				3DD5ED301912F5A000A4383A /* SensorViewer.h */,
+				3DD5ED2F1912F5A000A4383A /* SensorViewer.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1248,6 +1253,7 @@
 				846a4dfa13b504ba5a646805b1764db4 /* UIBackground.cpp in Sources */,
 				09cc502af0f68e46a5eb35c2beafcc45 /* UIMapBackground.cpp in Sources */,
 				3DD5ED181912F02E00A4383A /* base64.cpp in Sources */,
+				3DD5ED311912F5A000A4383A /* SensorViewer.cpp in Sources */,
 				f894b7ef4565235db5f79ae14d990d64 /* UICamera.cpp in Sources */,
 				3DD5ED1A1912F02E00A4383A /* SimpleWebScraper.cpp in Sources */,
 				621a2199ab18e0b300d343f45ce267c5 /* UIEasyCam.cpp in Sources */,

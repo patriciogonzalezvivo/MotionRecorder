@@ -25,6 +25,12 @@ void ofApp::keyPressed(int key){
         project = new VideoPlayer();
         project->setup();
         project->play();
+    } else if(key == OF_KEY_F2){
+        project->stop();
+        delete project;
+        project = new SensorViewer();
+        project->setup();
+        project->play();
     }
 }
 
