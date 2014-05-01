@@ -1,12 +1,12 @@
 //
-//  Prototype03.cpp
+//  VideoPlayer.cpp
 //
 //  Created by Patricio Gonzalez Vivo on 9/23/13.
 //
 //
-#include "Prototype03.h"
+#include "VideoPlayer.h"
 
-void Prototype03::selfSetup(){
+void VideoPlayer::selfSetup(){
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
 
@@ -20,29 +20,29 @@ void Prototype03::selfSetup(){
     client.addListener(this);
 }
 
-void Prototype03::selfSetupGuis(){
+void VideoPlayer::selfSetupGuis(){
     backgroundSet(new UIMapBackground());
     cameraSet(new UIGameCam());
     guiAdd(grid);
 }
 
-void Prototype03::selfGuiEvent(ofxUIEventArgs &e){
+void VideoPlayer::selfGuiEvent(ofxUIEventArgs &e){
     
 }
 
-void Prototype03::selfSetupSystemGui(){
+void VideoPlayer::selfSetupSystemGui(){
     sysGui->addSlider("Sphere_radius", 1, 1000, &sphereRadio);
     sysGui->addIntSlider("Sphere_deff", 36, 360, &sphereDefinition);
 }
 
 //---------------------------------------------------
 
-void Prototype03::guiSystemEvent(ofxUIEventArgs &e){
+void VideoPlayer::guiSystemEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     sphereMake();
 }
 
-void Prototype03::sphereMake(){
+void VideoPlayer::sphereMake(){
     sphereMesh.clear();
     sphereMesh.setMode(OF_PRIMITIVE_TRIANGLES);
     
@@ -52,7 +52,7 @@ void Prototype03::sphereMake(){
         if (map_next_x >= sphereDefinition)
             map_next_x -= sphereDefinition;
         
-        const unsigned int endHeight = (sphereDefinition/2) - 1;
+        const unsigned int endHeight = (sphereDefinition/2);
         
         for (unsigned int y = 0; y < (sphereDefinition/2); y ++) {
             const int next_y = y + 1;
@@ -64,18 +64,17 @@ void Prototype03::sphereMake(){
             spherePoint(x, next_y);
             spherePoint(next_x, next_y);
             spherePoint(next_x, y);
-            
         }
     }
 }
 
-void Prototype03::selfBegin(){
+void VideoPlayer::selfBegin(){
     sphereMake();
 }
 
-void Prototype03::spherePoint(int _x, int _y){
-    float rad_azimuth = _x / (float) (sphereDefinition - 1.0f) * TWO_PI;
-    float rad_elevation = _y / (float) ((sphereDefinition/2) - 1.0f) * PI;
+void VideoPlayer::spherePoint(int _x, int _y){
+    float rad_azimuth = _x / (float) (sphereDefinition) * TWO_PI;
+    float rad_elevation = _y / (float) ((sphereDefinition/2)) * PI;
     
     //Calculate the cartesian position of this vertex (if it was at unit distance)
     ofPoint xyz;
@@ -97,7 +96,7 @@ void Prototype03::spherePoint(int _x, int _y){
     sphereMesh.addVertex(xyz);
 }
 
-void Prototype03::selfUpdate(){
+void VideoPlayer::selfUpdate(){
     player.update();
     
     {
@@ -106,7 +105,7 @@ void Prototype03::selfUpdate(){
     }
 }
 
-void Prototype03::selfDraw(){
+void VideoPlayer::selfDraw(){
     materials["MATERIAL 1"]->begin();
     
     ofSetColor(255);
@@ -124,8 +123,10 @@ void Prototype03::selfDraw(){
             ofPushMatrix();
             ofTranslate(0,0,it->second.altitud);
             float angle;
-            ofVec3f axis;//(0,0,1.0f);
-            it->second.attitude.getRotate(angle, axis);
+            ofVec3f axis;
+            ofQuaternion quat = it->second.attitude;
+            quat.inverse();
+            quat.getRotate(angle, axis);
             ofRotate(angle, axis.x, -axis.y, axis.z); // rotate with quaternion
             
             ofNoFill();
@@ -165,14 +166,14 @@ void Prototype03::selfDraw(){
     materials["MATERIAL 1"]->end();
 }
 
-void Prototype03::selfEnd(){
+void VideoPlayer::selfEnd(){
 }
 
-void Prototype03::selfExit(){
+void VideoPlayer::selfExit(){
     
 }
 
-void Prototype03::selfKeyPressed(ofKeyEventArgs & args){
+void VideoPlayer::selfKeyPressed(ofKeyEventArgs & args){
     if(args.key == ' '){
         
         bPlaying = !bPlaying;
@@ -186,48 +187,48 @@ void Prototype03::selfKeyPressed(ofKeyEventArgs & args){
     }
 }
 
-void Prototype03::selfKeyReleased(ofKeyEventArgs & args){
+void VideoPlayer::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-void Prototype03::selfMouseMoved(ofMouseEventArgs& data){
+void VideoPlayer::selfMouseMoved(ofMouseEventArgs& data){
 	
 }
 
-void Prototype03::selfMousePressed(ofMouseEventArgs& data){
+void VideoPlayer::selfMousePressed(ofMouseEventArgs& data){
 
 }
 
-void Prototype03::selfMouseDragged(ofMouseEventArgs& data){
+void VideoPlayer::selfMouseDragged(ofMouseEventArgs& data){
 
 }
 
-void Prototype03::selfMouseReleased(ofMouseEventArgs& data){
+void VideoPlayer::selfMouseReleased(ofMouseEventArgs& data){
 
 }
 
 //--------------------------------------------------------------
-void Prototype03::onConnect( ofxLibwebsockets::Event& args ){
+void VideoPlayer::onConnect( ofxLibwebsockets::Event& args ){
     cout<<"on connected"<<endl;
 }
 
 //--------------------------------------------------------------
-void Prototype03::onOpen( ofxLibwebsockets::Event& args ){
+void VideoPlayer::onOpen( ofxLibwebsockets::Event& args ){
     cout<<"on open"<<endl;
 }
 
 //--------------------------------------------------------------
-void Prototype03::onClose( ofxLibwebsockets::Event& args ){
+void VideoPlayer::onClose( ofxLibwebsockets::Event& args ){
     cout<<"on close"<<endl;
 }
 
 //--------------------------------------------------------------
-void Prototype03::onIdle( ofxLibwebsockets::Event& args ){
+void VideoPlayer::onIdle( ofxLibwebsockets::Event& args ){
     cout<<"on idle"<<endl;
 }
 
 //--------------------------------------------------------------
-void Prototype03::onMessage( ofxLibwebsockets::Event& args ){
+void VideoPlayer::onMessage( ofxLibwebsockets::Event& args ){
     if(args.json.size()!=sensors.size()){
         sensors.clear();
     }
@@ -251,6 +252,6 @@ void Prototype03::onMessage( ofxLibwebsockets::Event& args ){
 }
 
 //--------------------------------------------------------------
-void Prototype03::onBroadcast( ofxLibwebsockets::Event& args ){
+void VideoPlayer::onBroadcast( ofxLibwebsockets::Event& args ){
     cout<<"got broadcast "<<args.message<<endl;
 }

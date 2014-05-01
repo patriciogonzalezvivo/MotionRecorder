@@ -1,5 +1,5 @@
 //
-//  Prototype03.h
+//  VideoPlayer.h
 //
 //  Created by Patricio Gonzalez Vivo on 9/23/13.
 //
@@ -23,10 +23,10 @@ struct SimpleSensor{
     bool            bRecording;
 };
 
-class Prototype03 : public UI3DProject {
+class VideoPlayer : public UI3DProject {
 public:
     
-    string getSystemName(){ return "Prototype03";}
+    string getSystemName(){ return "VideoPlayer";}
     
     void selfSetupGuis();
     void selfGuiEvent(ofxUIEventArgs &e);

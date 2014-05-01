@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 
-#include "Prototype03.h"
+#include "VideoPlayer.h"
 
 class ofApp : public ofBaseApp{
 public:

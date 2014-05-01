@@ -20,7 +20,7 @@ void ofApp::setup(){
     //  Motion
     //
     motionManager = [[CMMotionManager alloc] init];
-    float updateFrequency = 1.0f/30.0f;
+    float updateFrequency = 1.0f/60.0f;
     [motionManager setDeviceMotionUpdateInterval: updateFrequency];
     referenceAttitude = nil;
     referenceFrameType = [motionManager attitudeReferenceFrame];

@@ -5,9 +5,9 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>87F5C15A-7FDB-4BC2-AF73-FD182FF2DECE</string>
+	<string>571F29AD-C37E-4DC3-8605-EC9CBC4394F3</string>
 	<key>IDESourceControlProjectName</key>
-	<string>06-Node</string>
+	<string>OSXApp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3FFB2C0E-F245-478D-99EB-B4317D3C7A3A</key>
@@ -20,13 +20,11 @@
 		<string>ssh://github.com/obviousjim/ofxAVFVideoPlayer.git</string>
 		<key>9E81E90F-32AE-46C6-9679-0E5B98CFCF94</key>
 		<string>https://github.com/rezaali/ofxUI.git</string>
-		<key>D8195637-83CD-4260-9A7E-9ED431436D96</key>
-		<string>ssh://github.com/jefftimesten/ofxJSON.git</string>
 		<key>EC6BF890-5D29-4DC7-8E76-4AE754ABF8CA</key>
 		<string>ssh://github.com/labatrockwell/ofxLibwebsockets.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>apps/MotionRecorder/OSXApp/06-Node.xcodeproj/project.xcworkspace</string>
+	<string>apps/MotionRecorder/OSXApp/OSXApp.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3FFB2C0E-F245-478D-99EB-B4317D3C7A3A</key>
@@ -39,8 +37,6 @@
 		<string>../../../../../addons/ofxAVFVideoPlayer</string>
 		<key>9E81E90F-32AE-46C6-9679-0E5B98CFCF94</key>
 		<string>../../../../../addons/ofxUI</string>
-		<key>D8195637-83CD-4260-9A7E-9ED431436D96</key>
-		<string>../../../../../addons/ofxJSON</string>
 		<key>EC6BF890-5D29-4DC7-8E76-4AE754ABF8CA</key>
 		<string>../../../../../addons/ofxLibwebsockets</string>
 	</dict>
@@ -67,14 +63,6 @@
 			<string>91C8C904-02DC-4191-867D-AF0731BD329F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxAVFVideoPlayer</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D8195637-83CD-4260-9A7E-9ED431436D96</string>
-			<key>IDESourceControlWCCName</key>
-			<string>ofxJSON</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

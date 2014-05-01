@@ -3,7 +3,7 @@
     <Name>MATERIAL 1</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>207.000000000</YPosition>
+    <YPosition>182.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -27,17 +27,17 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AR</Name>
+    <Name>DR</Name>
     <Value>0.800000012</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AG</Name>
+    <Name>DG</Name>
     <Value>0.800000012</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AB</Name>
+    <Name>DB</Name>
     <Value>0.800000012</Value>
 </Widget>
 <Widget>

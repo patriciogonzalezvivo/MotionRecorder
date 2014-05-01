@@ -4,7 +4,7 @@
 void ofApp::setup(){
     ofSetVerticalSync(true);
 	
-    project = new Prototype03();
+    project = new VideoPlayer();
 	project->setup();
 	project->play();
 }
@@ -22,7 +22,7 @@ void ofApp::keyPressed(int key){
     if(key == OF_KEY_F1){
         project->stop();
         delete project;
-        project = new Prototype03();
+        project = new VideoPlayer();
         project->setup();
         project->play();
     }

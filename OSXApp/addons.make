@@ -1,5 +1,3 @@
-ofxAssimpModelLoader
-ofxJSON
 ofxLibwebsockets
 ofxUI
 ofxUIProject
