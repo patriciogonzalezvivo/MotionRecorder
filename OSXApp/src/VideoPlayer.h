@@ -7,12 +7,26 @@
 
 #pragma once
 
+#define USE_GSTREAMER
+
 #include "UI3DProject.h"
 
 #include "UI3DGrid.h"
 #include "UIMap.h"
 
+
+
+#ifdef USE_GSTREAMER
+
+
+#else
+
 #include "ofxAVFVideoPlayer.h"
+
+#endif
+
+
+
 #include "ofxLibwebsockets.h"
 
 struct SimpleSensor{
@@ -67,8 +81,13 @@ protected:
     
     ofxLibwebsockets::Client client;
     map<string,SimpleSensor>  sensors;
-    
+
+#ifdef USE_GSTREAMER
+    ofVideoPlayer   player;
+    #else
     ofxAVFVideoPlayer   player;
+#endif
+    
     ofVboMesh       sphereMesh;
     
     int     sphereDefinition;
