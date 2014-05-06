@@ -5,7 +5,13 @@
 //
 //
 #include "VideoPlayer.h"
+
+#ifdef USE_GSTREAMER
+
 #include "ofGstVideoPlayer.h"
+
+#endif
+
 
 void VideoPlayer::selfSetup(){
     ofSetVerticalSync(true);
