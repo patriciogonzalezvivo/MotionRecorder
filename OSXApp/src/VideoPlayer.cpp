@@ -6,10 +6,19 @@
 //
 #include "VideoPlayer.h"
 
+#ifdef USE_GSTREAMER
+#include "ofGstVideoPlayer.h"
+#endif
+
 void VideoPlayer::selfSetup(){
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
 
+    
+#ifdef USE_GSTREAMER
+    player.setPlayer(ofPtr<ofGstVideoPlayer>(new ofGstVideoPlayer));
+#endif
+    
     player.loadMovie(getDataPath()+"escena01.mov");
     player.setLoopState(OF_LOOP_NORMAL);
 
