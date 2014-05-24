@@ -15,12 +15,13 @@
 #include "ofxAVFVideoPlayer.h"
 #include "ofxLibwebsockets.h"
 
-struct SimpleSensor{
+struct FrameRecord{
+    float           sec;
+    
     ofQuaternion    attitude;
     ofVec3f         acceleration;
     Location        location;
     double          altitud;
-    bool            bRecording;
 };
 
 class VideoPlayer : public UI3DProject {
@@ -52,27 +53,17 @@ public:
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
     
-    void onConnect( ofxLibwebsockets::Event& args );
-    void onOpen( ofxLibwebsockets::Event& args );
-    void onClose( ofxLibwebsockets::Event& args );
-    void onIdle( ofxLibwebsockets::Event& args );
-    void onMessage( ofxLibwebsockets::Event& args );
-    void onBroadcast( ofxLibwebsockets::Event& args );
-    
     void sphereMake();
     void spherePoint(int _x, int _y);
     
 protected:
     UI3DGrid grid;
     
-    ofxLibwebsockets::Client client;
-    map<string,SimpleSensor>  sensors;
-    
     ofxAVFVideoPlayer   player;
     ofVboMesh       sphereMesh;
+    int             sphereDefinition;
+    float           sphereRadio;
+    bool            bPlaying;
     
-    int     sphereDefinition;
-    float   sphereRadio;
-    
-    bool    bPlaying;
+    vector<FrameRecord> sensor;
 };

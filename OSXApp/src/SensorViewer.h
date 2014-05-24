@@ -67,8 +67,6 @@ protected:
     UIMap       map;
     Location    firstLocation;
     
-    ofVboMesh   mesh;
-    
     UI3DGrid    grid;
     
     float       sensorScale;

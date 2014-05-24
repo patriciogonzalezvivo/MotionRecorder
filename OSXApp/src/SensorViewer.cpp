@@ -23,8 +23,6 @@ void SensorViewer::selfSetup(){
     firstLocation.lat = 0;
     firstLocation.lon = 0;
     
-    mesh.clear();
-    mesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
 void SensorViewer::selfSetupGuis(){
@@ -65,8 +63,6 @@ void SensorViewer::selfDraw(){
     ofRotate(90, 1, 0, 0);
     grid.draw();
     ofPopMatrix();
-
-    mesh.drawVertices();
     
     ofPushMatrix();
     ofScale(1, -1, 1);

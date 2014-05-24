@@ -19,9 +19,7 @@
 		26874b150c8535aea0f24c8cd56cf117 /* ofxUIImageSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2689c5c8a97002c218125f2fe1675282 /* ofxUIImageSlider.cpp */; };
 		2d1b256a63780bb017becd1a57da62a3 /* Recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644e48902b62fe6144a2bf9fb149e169 /* Recorder.cpp */; };
 		341db29ff1d926957e046f48a7a4cf25 /* SystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5cf537034ea91bb69884bf12f5c3159b /* SystemTextbox.mm */; };
-		3DD5ED151912F02E00A4383A /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5ECF41912F02E00A4383A /* Grid.cpp */; };
-		3DD5ED161912F02E00A4383A /* UI2DGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5ECF81912F02E00A4383A /* UI2DGrid.cpp */; };
-		3DD5ED171912F02E00A4383A /* UI3DGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5ECFA1912F02E00A4383A /* UI3DGrid.cpp */; };
+		3DD2DD26191542D500D429CB /* UI3DGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD2DD24191542D500D429CB /* UI3DGrid.cpp */; };
 		3DD5ED181912F02E00A4383A /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5ECFD1912F02E00A4383A /* base64.cpp */; };
 		3DD5ED191912F02E00A4383A /* LinearProjection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5ED041912F02E00A4383A /* LinearProjection.cpp */; };
 		3DD5ED1A1912F02E00A4383A /* SimpleWebScraper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5ED0B1912F02E00A4383A /* SimpleWebScraper.cpp */; };
@@ -209,14 +207,8 @@
 		37420e1e4019bbc4b25492ee29ca6960 /* UILog.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = UILog.cpp; path = ../../../addons/ofxUIProject/src/log/UILog.cpp; sourceTree = SOURCE_ROOT; };
 		377d4405d8997e654021dfb164d61ac2 /* ec.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ec.h; path = ../../../addons/ofxLibwebsockets/libs/openssl/openssl/ec.h; sourceTree = SOURCE_ROOT; };
 		38ebd5650a3bf5a499b07525be5fdbc6 /* ofxUISuperCanvas.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUISuperCanvas.cpp; path = ../../../addons/ofxUI/src/ofxUISuperCanvas.cpp; sourceTree = SOURCE_ROOT; };
-		3DD5ECF41912F02E00A4383A /* Grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
-		3DD5ECF51912F02E00A4383A /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
-		3DD5ECF61912F02E00A4383A /* GridBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridBox.h; sourceTree = "<group>"; };
-		3DD5ECF71912F02E00A4383A /* GridCross.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCross.h; sourceTree = "<group>"; };
-		3DD5ECF81912F02E00A4383A /* UI2DGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UI2DGrid.cpp; sourceTree = "<group>"; };
-		3DD5ECF91912F02E00A4383A /* UI2DGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI2DGrid.h; sourceTree = "<group>"; };
-		3DD5ECFA1912F02E00A4383A /* UI3DGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UI3DGrid.cpp; sourceTree = "<group>"; };
-		3DD5ECFB1912F02E00A4383A /* UI3DGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI3DGrid.h; sourceTree = "<group>"; };
+		3DD2DD24191542D500D429CB /* UI3DGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UI3DGrid.cpp; path = ../../../addons/ofxUIProject/src/gl/UI3DGrid.cpp; sourceTree = "<group>"; };
+		3DD2DD25191542D500D429CB /* UI3DGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UI3DGrid.h; path = ../../../addons/ofxUIProject/src/gl/UI3DGrid.h; sourceTree = "<group>"; };
 		3DD5ECFD1912F02E00A4383A /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
 		3DD5ECFE1912F02E00A4383A /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
 		3DD5ED001912F02E00A4383A /* AbstractMapProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMapProvider.h; sourceTree = "<group>"; };
@@ -575,22 +567,6 @@
 			name = openssl;
 			sourceTree = "<group>";
 		};
-		3DD5ECF31912F02E00A4383A /* grids */ = {
-			isa = PBXGroup;
-			children = (
-				3DD5ECF41912F02E00A4383A /* Grid.cpp */,
-				3DD5ECF51912F02E00A4383A /* Grid.h */,
-				3DD5ECF61912F02E00A4383A /* GridBox.h */,
-				3DD5ECF71912F02E00A4383A /* GridCross.h */,
-				3DD5ECF81912F02E00A4383A /* UI2DGrid.cpp */,
-				3DD5ECF91912F02E00A4383A /* UI2DGrid.h */,
-				3DD5ECFA1912F02E00A4383A /* UI3DGrid.cpp */,
-				3DD5ECFB1912F02E00A4383A /* UI3DGrid.h */,
-			);
-			name = grids;
-			path = ../../../addons/ofxUIProject/extra/grids;
-			sourceTree = "<group>";
-		};
 		3DD5ECFC1912F02E00A4383A /* UIMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +629,8 @@
 		51449f13e55ce9b0b40374503d96c1bf /* gl */ = {
 			isa = PBXGroup;
 			children = (
+				3DD2DD24191542D500D429CB /* UI3DGrid.cpp */,
+				3DD2DD25191542D500D429CB /* UI3DGrid.h */,
 				f8538ab05571d76d232e9482dd8444d9 /* PingPong.h */,
 				a1e7a7f265682a1f56d0feb629a93e77 /* UIFog.cpp */,
 				954e1109e35a5924b898f4c2513a7026 /* UIFog.h */,
@@ -670,7 +648,6 @@
 		534d7afab9219e3e87cb95eb92f126c2 /* ofxUIProject */ = {
 			isa = PBXGroup;
 			children = (
-				3DD5ECF31912F02E00A4383A /* grids */,
 				3DD5ECFC1912F02E00A4383A /* UIMap */,
 				e7697fe6368558ac94fbe91fd2ea9d1a /* src */,
 			);
@@ -1210,6 +1187,7 @@
 				9be4ae0aa2b8c436bdfe9d4d6ad0b03d /* ofxUIDragableLabelButton.cpp in Sources */,
 				f392a99d83698fc09912788025e19c5d /* ofxUIDropDownList.cpp in Sources */,
 				084025da517d8329301fe1b62b99dfa0 /* ofxUIEventArgs.cpp in Sources */,
+				3DD2DD26191542D500D429CB /* UI3DGrid.cpp in Sources */,
 				7252706da14c1be63950adda6d4d0967 /* ofxUIFPS.cpp in Sources */,
 				3DD5ED251912F04700A4383A /* ofxAVFVideoRenderer.m in Sources */,
 				22030cbdcc25d815e7ed6757c2507f08 /* ofxUIFPSSlider.cpp in Sources */,
@@ -1227,7 +1205,6 @@
 				222c3ab10fa3158602718602300bb16f /* ofxUIMultiImageButton.cpp in Sources */,
 				f9c20834354acc8337320b8c62c659b1 /* ofxUIMultiImageToggle.cpp in Sources */,
 				e3d59a6b55f05669b3fbf8bdc16d4877 /* ofxUINumberDialer.cpp in Sources */,
-				3DD5ED151912F02E00A4383A /* Grid.cpp in Sources */,
 				3DD5ED191912F02E00A4383A /* LinearProjection.cpp in Sources */,
 				d60e54e7fd6e19bc8636e0d23de045dc /* ofxUIRadio.cpp in Sources */,
 				1587708e3cac72997e43504ee41595b3 /* ofxUIRangeSlider.cpp in Sources */,
@@ -1242,7 +1219,6 @@
 				5ae95adb5549701423b6da481fb20e6f /* ofxUITabBar.cpp in Sources */,
 				c961be22ab9a8ccf037fc18f5bdc5491 /* ofxUITextArea.cpp in Sources */,
 				f8d05f7c7f785ce323983b47e137110b /* ofxUITextInput.cpp in Sources */,
-				3DD5ED171912F02E00A4383A /* UI3DGrid.cpp in Sources */,
 				04c82720b149ce576b8cbb06ac6d40d2 /* ofxUIToggle.cpp in Sources */,
 				e3a1109f67d711d6c256031e9b907021 /* ofxUIToggleMatrix.cpp in Sources */,
 				60012c723b05938a3d38833536981664 /* ofxUIValuePlotter.cpp in Sources */,
@@ -1283,7 +1259,6 @@
 				933a2227713c720ceff80fd967d0a8ee /* tinyxml.cpp in Sources */,
 				9d44dc88ef9e7991b4a09951e2e4769f /* tinyxmlerror.cpp in Sources */,
 				5a4349e9754d6fa14c0f2a3a1abc30b6 /* tinyxmlparser.cpp in Sources */,
-				3DD5ED161912F02E00A4383A /* UI2DGrid.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

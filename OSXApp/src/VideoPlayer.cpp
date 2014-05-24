@@ -16,8 +16,48 @@ void VideoPlayer::selfSetup(){
     bPlaying = false;
     sphereDefinition = 360;
     
-    client.connect("patriciogonzalezvivo.com", 8080);
-    client.addListener(this);
+    float initMs = -1;
+    float initSc = -1;
+    float initMn = -1;
+    float initHr = -1;
+    
+    ofBuffer buffer = ofBufferFromFile("sensor01.csv");
+    while (!buffer.isLastLine()) {
+		string line = buffer.getNextLine();
+		
+		//Split line into strings
+		vector<string> values = ofSplitString(line, ",");
+		
+        if(values.size()>1){
+            FrameRecord s;
+            
+            vector<string> time = ofSplitString(values[0], "-");
+//            2014-05-09-13-12-31-672
+//            0    1  2  3  4  5  6
+//
+            float Ms,Sc,Mn,Hr;
+            Ms = ofToFloat(time[6]);
+            Sc = ofToFloat(time[5]);
+            Mn = ofToFloat(time[4]);
+            Hr = ofToFloat(time[3]);
+            
+            if(initMs == -1 && initSc == -1 && initMn == -1 && initHr == -1){
+                initMs = Ms; initSc = Sc; initMn = Mn; initHr = Hr;
+            }
+            
+            s.sec = (Hr-initHr)*3600.0+
+                    (Mn-initMn)*60.0+
+                    (Sc-initSc)+
+                    (Ms-initMs)*0.1;
+            
+            s.attitude.set(ofToFloat(values[1]),
+                           ofToFloat(values[2]),
+                           ofToFloat(values[3]),
+                           ofToFloat(values[4]));
+            
+            sensor.push_back(s);
+        }
+	}
 }
 
 void VideoPlayer::selfSetupGuis(){
@@ -98,11 +138,6 @@ void VideoPlayer::spherePoint(int _x, int _y){
 
 void VideoPlayer::selfUpdate(){
     player.update();
-    
-    {
-        string message = "{ \"event\":\"get\" }";
-        client.send(message);
-    }
 }
 
 void VideoPlayer::selfDraw(){
@@ -113,55 +148,11 @@ void VideoPlayer::selfDraw(){
     ofRotate(90, 1, 0, 0);
     grid.draw();
     ofPopMatrix();
-    
-    float sensorScale = 10;
-    
-    if (sensors.size()>0){
-        ofPushMatrix();
-        ofScale(1, -1, 1);
-        for (std::map<string,SimpleSensor>::iterator it=sensors.begin(); it!=sensors.end(); ++it){
-            ofPushMatrix();
-            ofTranslate(0,0,it->second.altitud);
-            float angle;
-            ofVec3f axis;
-            ofQuaternion quat = it->second.attitude;
-            quat.inverse();
-            quat.getRotate(angle, axis);
-            ofRotate(angle, axis.x, -axis.y, axis.z); // rotate with quaternion
-            
-            ofSetColor(255);
-            player.getTextureReference().bind();
-            sphereMesh.draw();
-            player.getTextureReference().unbind();
-            
-            ofNoFill();
-            ofSetColor(255,200);
-            ofDrawAxis(100*sensorScale);
-            
-            ofSetColor(0, 0, 255,100);
-            ofCircle(0, 0, sphereRadio-10);
-            
-            ofPushMatrix();
-            ofRotate(90, 1, 0, 0);
-            ofSetColor(0, 255, 0,100);
-            ofCircle(0, 0, sphereRadio-10);
-            ofPopMatrix();
-            
-            ofPushMatrix();
-            ofRotate(90, 0, 1, 0);
-            ofSetColor(255, 0, 0,100);
-            ofCircle(0, 0, sphereRadio-10);
-            ofPopMatrix();
-            
-            ofPopMatrix();
-        }
-        ofPopMatrix();
-    } else {
-        ofSetColor(255);
-        player.getTextureReference().bind();
-        sphereMesh.draw();
-        player.getTextureReference().unbind();
-    }
+
+    ofSetColor(255);
+    player.getTextureReference().bind();
+    sphereMesh.draw();
+    player.getTextureReference().unbind();
 
     materials["MATERIAL 1"]->end();
 }
@@ -205,53 +196,4 @@ void VideoPlayer::selfMouseDragged(ofMouseEventArgs& data){
 
 void VideoPlayer::selfMouseReleased(ofMouseEventArgs& data){
 
-}
-
-//--------------------------------------------------------------
-void VideoPlayer::onConnect( ofxLibwebsockets::Event& args ){
-    cout<<"on connected"<<endl;
-}
-
-//--------------------------------------------------------------
-void VideoPlayer::onOpen( ofxLibwebsockets::Event& args ){
-    cout<<"on open"<<endl;
-}
-
-//--------------------------------------------------------------
-void VideoPlayer::onClose( ofxLibwebsockets::Event& args ){
-    cout<<"on close"<<endl;
-}
-
-//--------------------------------------------------------------
-void VideoPlayer::onIdle( ofxLibwebsockets::Event& args ){
-    cout<<"on idle"<<endl;
-}
-
-//--------------------------------------------------------------
-void VideoPlayer::onMessage( ofxLibwebsockets::Event& args ){
-    if(args.json.size()!=sensors.size()){
-        sensors.clear();
-    }
-    
-    for(int i = 0; i < args.json.size(); i++){
-        if(args.json[i]["attitud"] != NULL){
-            string id = args.json[i]["id"].asString();
-            sensors[id].attitude.set(args.json[i]["attitud"]["x"].asFloat(),
-                                     args.json[i]["attitud"]["y"].asFloat(),
-                                     args.json[i]["attitud"]["z"].asFloat(),
-                                     args.json[i]["attitud"]["w"].asFloat());
-            sensors[id].acceleration.set(args.json[i]["acceleration"]["x"].asFloat(),
-                                         args.json[i]["acceleration"]["y"].asFloat(),
-                                         args.json[i]["acceleration"]["z"].asFloat());
-            sensors[id].location.lat = args.json[i]["position"]["lat"].asDouble();
-            sensors[id].location.lon = args.json[i]["position"]["lon"].asDouble();
-            sensors[id].altitud = args.json[i]["position"]["alt"].asDouble()*0.1;
-            sensors[id].bRecording = args.json[i]["recording"].asBool();
-        }
-    }
-}
-
-//--------------------------------------------------------------
-void VideoPlayer::onBroadcast( ofxLibwebsockets::Event& args ){
-    cout<<"got broadcast "<<args.message<<endl;
 }
