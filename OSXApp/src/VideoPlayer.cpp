@@ -71,7 +71,7 @@ void VideoPlayer::selfSetup(){
 
 void VideoPlayer::selfSetupGuis(){
     backgroundSet(new UIMapBackground());
-    cameraSet(new UIGameCam());
+//    cameraSet(new UIGameCam());
     guiAdd(grid);
 }
 

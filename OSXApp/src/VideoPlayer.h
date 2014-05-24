@@ -16,18 +16,10 @@
 
 
 
-#ifdef USE_GSTREAMER
-
-
-#else
-
+#ifndef USE_GSTREAMER
 #include "ofxAVFVideoPlayer.h"
-
 #endif
 
-
-
-#include "ofxLibwebsockets.h"
 
 struct FrameRecord{
     float           sec;
@@ -72,16 +64,10 @@ public:
     
 protected:
     UI3DGrid grid;
-    
-<<<<<<< HEAD
-=======
-    ofxLibwebsockets::Client client;
-    map<string,SimpleSensor>  sensors;
 
 #ifdef USE_GSTREAMER
     ofVideoPlayer   player;
-    #else
->>>>>>> ee8e30124cf070f930b50ea946011b3ec5b879b0
+#else
     ofxAVFVideoPlayer   player;
 #endif
     
