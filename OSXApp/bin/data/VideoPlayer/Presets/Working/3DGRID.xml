@@ -13,12 +13,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>gridLineWidth</Name>
-    <Value>1.000000000</Value>
+    <Value>0.500000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>majorGridLineWidth</Name>
-    <Value>1.500000000</Value>
+    <Value>0.500000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>gridAlpha</Name>
-    <Value>36.428573608</Value>
+    <Value>118.078819275</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -63,7 +63,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>gridMajorAlpha</Name>
-    <Value>82.906402588</Value>
+    <Value>194.704437256</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -78,15 +78,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>fogFalloffDistance</Name>
-    <Value>462.068969727</Value>
+    <Value>2224.137939453</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogFalloffExpo</Name>
-    <Value>3.470936060</Value>
+    <Value>4.072906494</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>fogFalloffScale</Name>
-    <Value>1.200000048</Value>
+    <Value>1.046797991</Value>
 </Widget>

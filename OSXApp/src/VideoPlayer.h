@@ -7,7 +7,7 @@
 
 #pragma once
 
-#define USE_GSTREAMER
+
 
 #include "UI3DProject.h"
 
@@ -15,7 +15,7 @@
 #include "UIMap.h"
 
 
-
+//#define USE_GSTREAMER
 #ifndef USE_GSTREAMER
 #include "ofxAVFVideoPlayer.h"
 #endif
@@ -47,6 +47,7 @@ public:
     void selfUpdate();
     
     void selfDraw();
+    void selfDrawOverlay();
     
 	void selfEnd();
     void selfExit();
@@ -77,4 +78,8 @@ protected:
     bool            bPlaying;
     
     vector<FrameRecord> sensor;
+    ofQuaternion    attitude;
+    float           xOffSet,yOffSet,zOffSet,wOffSet;
+    float           time,timeOffSet;
+    int             frame;
 };

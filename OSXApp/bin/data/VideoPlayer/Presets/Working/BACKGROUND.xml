@@ -3,7 +3,7 @@
     <Name>BACKGROUND</Name>
     <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>257.000000000</YPosition>
+    <YPosition>282.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Exp</Name>
-    <Value>0.162561581</Value>
+    <Value>0.403940886</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -53,12 +53,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>bHUE</Name>
-    <Value>0.000000000</Value>
+    <Value>0.701570690</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>bSAT</Name>
-    <Value>0.000000000</Value>
+    <Value>0.104712039</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

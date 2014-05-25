@@ -30,7 +30,7 @@ void VideoPlayer::selfSetup(){
     float initMn = -1;
     float initHr = -1;
     
-    ofBuffer buffer = ofBufferFromFile("sensor01.csv");
+    ofBuffer buffer = ofBufferFromFile(getDataPath()+"sensor01.csv");
     while (!buffer.isLastLine()) {
 		string line = buffer.getNextLine();
 		
@@ -50,14 +50,17 @@ void VideoPlayer::selfSetup(){
             Mn = ofToFloat(time[4]);
             Hr = ofToFloat(time[3]);
             
-            if(initMs == -1 && initSc == -1 && initMn == -1 && initHr == -1){
-                initMs = Ms; initSc = Sc; initMn = Mn; initHr = Hr;
+            if(initMs == -1){
+                initMs = Ms;
+                initSc = Sc;
+                initMn = Mn;
+                initHr = Hr;
             }
             
             s.sec = (Hr-initHr)*3600.0+
                     (Mn-initMn)*60.0+
                     (Sc-initSc)+
-                    (Ms-initMs)*0.1;
+                    (Ms-initMs)*0.001;
             
             s.attitude.set(ofToFloat(values[1]),
                            ofToFloat(values[2]),
@@ -67,6 +70,8 @@ void VideoPlayer::selfSetup(){
             sensor.push_back(s);
         }
 	}
+    
+    frame = 0;
 }
 
 void VideoPlayer::selfSetupGuis(){
@@ -80,15 +85,28 @@ void VideoPlayer::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 void VideoPlayer::selfSetupSystemGui(){
+    sysGui->addLabel("Sphere");
     sysGui->addSlider("Sphere_radius", 1, 1000, &sphereRadio);
     sysGui->addIntSlider("Sphere_deff", 36, 360, &sphereDefinition);
+    sysGui->addLabel("Offset");
+    sysGui->addSlider("Seconds", 0, 1200, &timeOffSet);
+    sysGui->addSlider("x", -1, 1, &xOffSet);
+    sysGui->addSlider("y", -1, 1, &yOffSet);
+    sysGui->addSlider("z", -1, 1, &zOffSet);
+    sysGui->addSlider("w", -1, 1, &wOffSet);
+    
 }
 
 //---------------------------------------------------
 
 void VideoPlayer::guiSystemEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
-    sphereMake();
+    
+    if(name.find("Sphere") == 0){
+        sphereMake();
+    } else if (name == "Seconds"){
+        frame = 0;
+    }
 }
 
 void VideoPlayer::sphereMake(){
@@ -147,6 +165,24 @@ void VideoPlayer::spherePoint(int _x, int _y){
 
 void VideoPlayer::selfUpdate(){
     player.update();
+    
+    {
+        time = player.getDuration()*player.getPosition()+timeOffSet;
+        
+        if (frame == sensor.size()-1) {
+            frame = 0;
+        }
+        
+        for (int i = frame; i < sensor.size(); i++) {
+            if(sensor[i].sec > time){
+                attitude = sensor[i].attitude;
+                frame = i-1;
+                break;
+            } else {
+                frame = i;
+            }
+        }
+    }
 }
 
 void VideoPlayer::selfDraw(){
@@ -159,12 +195,68 @@ void VideoPlayer::selfDraw(){
     ofPopMatrix();
 
     ofSetColor(255);
+    
+    float angle;
+    ofVec3f axis;
+    attitude.getRotate(angle, axis);
+    
+    ofPushMatrix();
+    ofRotate(angle, axis.x, axis.y, axis.z);
     player.getTextureReference().bind();
     sphereMesh.draw();
     player.getTextureReference().unbind();
+    ofPopMatrix();
 
     materials["MATERIAL 1"]->end();
 }
+
+void VideoPlayer::selfDrawOverlay(){
+    if(bDebug){
+        int start = frame-ofGetWidth()*0.5;
+        
+        ofSetColor(255);
+        ofLine(ofGetWidth()*0.5,0,
+               ofGetWidth()*0.5,200);
+        ofDrawBitmapString(ofToString(time), ofGetWidth()*0.5-30,215);
+        
+        ofPushMatrix();
+        ofPushStyle();
+        ofTranslate(0, ofGetHeight()*0.1);
+        
+        int x = 0;
+        if(start < 0){
+            ofTranslate(-start, 0);
+            start = 0;
+        }
+        
+        float amp = 0.1;
+        int end = start+ofGetWidth();
+        
+        ofPolyline roll,pitch,yaw;
+        for (int i = start; i < end && i < sensor.size(); i++ ) {
+            ofVec3f euler = sensor[i].attitude.getEuler();
+            
+            roll.addVertex(ofPoint(x,euler.x*amp - 50));
+            pitch.addVertex(ofPoint(x,euler.y*amp ));
+            yaw.addVertex(ofPoint(x,euler.z*amp + 50));
+            
+            x++;
+        }
+        
+        ofSetColor(255, 0, 0);
+        roll.draw();
+        
+        ofSetColor(0, 255, 0);
+        pitch.draw();
+        
+        ofSetColor(0, 0, 255);
+        yaw.draw();
+        
+        ofPopStyle();
+        ofPopMatrix();
+    }
+}
+
 
 void VideoPlayer::selfEnd(){
 }
@@ -180,9 +272,10 @@ void VideoPlayer::selfKeyPressed(ofKeyEventArgs & args){
         
         if(bPlaying){
             sphereMake();
+            player.setPaused(false);
             player.play();
         } else {
-            player.stop();
+            player.setPaused(true);
         }
     }
 }
