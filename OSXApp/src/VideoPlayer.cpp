@@ -89,11 +89,11 @@ void VideoPlayer::selfSetupSystemGui(){
     sysGui->addSlider("Sphere_radius", 1, 1000, &sphereRadio);
     sysGui->addIntSlider("Sphere_deff", 36, 360, &sphereDefinition);
     sysGui->addLabel("Offset");
-    sysGui->addSlider("Seconds", 0, 1200, &timeOffSet);
-    sysGui->addSlider("x", -1, 1, &xOffSet);
-    sysGui->addSlider("y", -1, 1, &yOffSet);
-    sysGui->addSlider("z", -1, 1, &zOffSet);
-    sysGui->addSlider("w", -1, 1, &wOffSet);
+    sysGui->addSlider("Seconds", 0, 900, &timeOffSet);
+    sysGui->addSlider("x", -0.1, 0.1, &xOffSet);
+    sysGui->addSlider("y", -0.1, 0.1, &yOffSet);
+    sysGui->addSlider("z", -0.1, 0.1, &zOffSet);
+    sysGui->addSlider("w", -0.1, 0.1, &wOffSet);
     
 }
 
@@ -198,7 +198,11 @@ void VideoPlayer::selfDraw(){
     
     float angle;
     ofVec3f axis;
-    attitude.getRotate(angle, axis);
+    
+    ofQuaternion offSet = ofQuaternion(xOffSet,yOffSet,zOffSet,wOffSet);
+
+    offSet *= attitude.inverse();
+    offSet.getRotate(angle, axis);
     
     ofPushMatrix();
     ofRotate(angle, axis.x, axis.y, axis.z);
